@@ -1,0 +1,24 @@
+## database
+#quarkus:
+#  datasource:
+#    health:
+#      enabled: true
+#    metrics:
+#      enabled: true
+#    db-kind: mssql
+#    username: sa
+#    password: Admin123#
+#    jdbc:
+#      url: jdbc:sqlserver://localhost:1433;databaseName=smartqhub;encrypt=false
+#      driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#  hibernate-orm:
+#    log:
+#      sql: true
+#    dialect: org.hibernate.dialect.SQLServerDialect
+#    jdbc:
+#      timezone: UTC
+#    mapping:
+#      timezone:
+#        default-storage: normalize-utc
+#    database:
+#      generation: update

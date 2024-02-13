@@ -1,0 +1,42 @@
+# database
+quarkus:
+  liquibase:
+    migrate-at-start: true
+    change-log: db/changelog-master.yml
+  http:
+    port: 8082
+    host: 0.0.0.0
+    non-application-root-path: quarkus
+  #live-reload:
+  #  instrumentation: true
+  datasource:
+    health:
+      enabled: true
+    metrics:
+      enabled: true
+    db-kind: mssql
+    username: sa
+    password: Admin123#
+    jdbc:
+      url: jdbc:sqlserver://localhost:1433;databaseName=smartqhub;encrypt=false
+      driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  hibernate-orm:
+    log:
+      sql: false
+    dialect: org.hibernate.dialect.SQLServerDialect
+    jdbc:
+      timezone: UTC
+    mapping:
+      timezone:
+        default-storage: normalize-utc
+    database:
+      generation: none
+  jef:
+    gpio:
+      pin0:
+        enabled: true
+        path: /dev/gpiochip0/17
+  log:
+    category:
+      "io.quarkiverse.jef.java.embedded.framework":
+        level: DEBUG

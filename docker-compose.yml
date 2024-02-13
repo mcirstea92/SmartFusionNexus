@@ -1,0 +1,27 @@
+version: '3'
+services:
+  sqlserver:
+    build: docker/sqlserver
+    ports:
+      - "1433:1433"
+  keycloak:
+    image: keycloak:v1
+    container_name: keycloak2306
+    build:
+      context: docker/keycloak
+      dockerfile: Dockerfile
+    command: [ "start", "--import-realm" ]
+    ports:
+      - "8888:8080"
+      - "8443:8443"
+    volumes:
+#      - ./usr/certs:/usr/certs
+      - ./keycloak/themes:/opt/keycloak/themes
+      - ./keycloak/providers:/opt/keycloak/providers
+      - ./keycloak/config:/opt/keycloak/data/import
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin1
+    depends_on:
+      sqlserver:
+        condition: service_started

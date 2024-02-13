@@ -1,0 +1,16 @@
+<configuration>
+    <property name="X-Request-ID" value="%X{X-Request-ID:-N/A}" />
+    <!-- Appender for File -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/application.log</file>
+        <encoder>
+            <pattern>%date{ISO8601} [%thread] %-5level %logger{36} - %X{X-Request-ID} %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root logger -->
+    <root level="info">
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>
