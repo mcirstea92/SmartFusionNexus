@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>ro.builditsmart.solutions</groupId>
-        <artifactId>SmartQHub</artifactId>
+        <artifactId>SmartFusionNexus</artifactId>
         <version>0.1-SNAPSHOT</version>
     </parent>
 
